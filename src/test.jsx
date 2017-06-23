@@ -7,7 +7,7 @@ import withAvailableWidth from './withAvailableWidth';
 
 function resizeObserver(domElement, notify) {
   const ro = new ResizeObserver(() => {
-    console.log('Resizing happened', domElement);
+    // console.log('Resizing happened', domElement);
     notify();
   });
   ro.observe(domElement);
@@ -16,15 +16,10 @@ function resizeObserver(domElement, notify) {
 
 function Component({ availableWidth }) {
   return (
-    <div style={{ width: '100%' }}>
-      <div
-        className="example"
-        style={{
-          width: availableWidth,
-        }}
-      >
-        w={availableWidth}
-      </div>
+    <div
+      className="example"
+    >
+      w={availableWidth}
     </div>
   );
 }
@@ -123,14 +118,26 @@ class TestApp extends PureComponent {
           This element should take up as much space as its siblings.
         </p>
         <div className="flexbox container">
-          <Comparison />
-          <Comparison />
-          <WrappedComponent />
+          <div style={{ flexGrow: 1 }}>
+            <Comparison />
+          </div>
+          <div style={{ flexGrow: 1 }}>
+            <Comparison />
+          </div>
+          <div style={{ flexGrow: 1 }}>
+            <WrappedComponent />
+          </div>
         </div>
         <div className="flexbox container">
-          <Comparison />
-          <Comparison />
-          <WrappedComponentRO />
+          <div style={{ flexGrow: 1 }}>
+            <Comparison />
+          </div>
+          <div style={{ flexGrow: 1 }}>
+            <Comparison />
+          </div>
+          <div style={{ flexGrow: 1 }}>
+            <WrappedComponentRO />
+          </div>
         </div>
         <hr />
 
@@ -145,7 +152,9 @@ class TestApp extends PureComponent {
           <div style={{ width: 100, flexShrink: '0' }}>
             <Comparison />
           </div>
-          <WrappedComponent />
+          <div style={{ flexGrow: 1 }}>
+            <WrappedComponent />
+          </div>
         </div>
         <div className="flexbox container">
           <div style={{ width: 150, flexShrink: '0' }}>
@@ -154,7 +163,9 @@ class TestApp extends PureComponent {
           <div style={{ width: 100, flexShrink: '0' }}>
             <Comparison />
           </div>
-          <WrappedComponentRO />
+          <div style={{ flexGrow: 1 }}>
+            <WrappedComponentRO />
+          </div>
         </div>
         <hr />
 

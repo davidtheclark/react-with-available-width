@@ -13,6 +13,7 @@
     "clean": "rimraf dist",
     "build": "npm run clean && babel src --out-dir dist --ignore *test.*",
     "build-test": "webpack",
+    "start": "open src/test.html && webpack --watch",
     "prepublish": "npm run build",
     "lint": "eslint . --ext .js,.jsx",
     "test": "npm run lint && jest"
@@ -20,7 +21,9 @@
   "jest": {
     "testRegex": "-test\\.jsx$"
   },
-  "dependencies": {},
+  "dependencies": {
+    "debounce": "^1.0.2"
+  },
   "peerDependencies": {
     "react": "^15.0.0"
   },
